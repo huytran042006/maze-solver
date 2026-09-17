@@ -10,8 +10,24 @@ class Vector:
     def is_empty(self):
         return True if self._size == 0 else False
 
+    def push(self, value):
+        if self._size < self._capacity:
+            pass
+        else:
+            new_capacity = self._capacity *2
+            new_data = [None] * new_capacity
+            for i in range(self._capacity):
+                new_data[i] = self._data[i]
+            self._capacity = new_capacity
+            self._data = new_data
+        self._data[self._size] = value
+        self._size +=1
+
+
+
 v = Vector(4)
-print(v._data)          # kỳ vọng: [None, None, None, None]
-print(v.size())          # kỳ vọng: 0
-print(v.is_empty())      # kỳ vọng: True
-print(v._capacity)       # kỳ vọng: 4
+v.push(10)
+print(v._data)           # [None, None, None, None]
+print(v.size())          # 0
+print(v.is_empty())      # True
+print(v._capacity)       # 4
