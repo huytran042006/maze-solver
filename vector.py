@@ -31,7 +31,7 @@ v = Vector(4)
 for i in range(4):
     v.push(i)
 
-print(v._data)           # [None, None, None, None]
-print(v.size())          # 0
-print(v.is_empty())      # True
-print(v._capacity)       # 4
+#print(v._data)           # [None, None, None, None]
+#print(v.size())          # 0
+#print(v.is_empty())      # True
+#print(v._capacity)       # 4

@@ -33,8 +33,17 @@ def load_maze(path):
                     countG -= 1
         if countS != 0 or countG !=0:
             is_valid = False
-
+    
     if is_valid:
         return grid, rows, cols
     else:
         return None
+        
+def print_maze(grid):                   
+    print('MAZE')                          # print MAZE \n
+    for i in range(grid.size()):           #grid.size() return hamany rows
+        row = grid.get(i)                  #grid.get(i) is ['#','S','.','.','.','G','#']
+        line = ''                          #this is where all elements will be add into 1 string line
+        for j in range(row.size()):        #from 0 to number of element in row ( which is 7)
+            line += row.get(j)             #add elements into string
+        print(line)                        #print line
