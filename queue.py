@@ -6,6 +6,12 @@ class Queue:
         self._front = 0
         self._rear = 0
 
+    def size(self):
+        return self._size    
+
+    def is_empty(self):
+        return True if self._size == 0 else False
+
     def enqueue(self, value):
         if self._size == self._capacity:
             raise IndexError('Queue is full')
