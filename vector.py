@@ -23,6 +23,9 @@ class Vector:
         self._data[self._size] = value
         self._size +=1
 
+    def get(self, index):
+        return self._data[index]
+
 
 
 v = Vector(4)
