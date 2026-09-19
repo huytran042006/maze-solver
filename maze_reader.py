@@ -1,4 +1,5 @@
 from vector import Vector
+from queue import Queue
 
 def load_maze(path):
     with open(path) as f:
@@ -69,3 +70,41 @@ def get_neighbors(grid, row, col):
             if test_element != '#':
                 neighbors.push((new_row, new_col))
     return neighbors
+
+def solve_maze(grid):
+    start = find_start(grid)
+    queue = Queue(grid.size()*grid.get(0).size())
+    queue.enqueue(start)
+    visited = {}
+    visited[start] = True
+    parent={}
+
+    found = False
+    while not queue.is_empty():
+        current = queue.dequeue()
+        char = grid.get(current[0]).get(current[1])
+        if char == 'G':
+            found = True
+            break
+        neighbors = get_neighbors(grid, current[0], current[1])
+        for i in range(neighbors.size()):
+            neighbor = neighbors.get(i)
+            if neighbor not in visited:
+                visited[neighbor] = True
+                parent[neighbor] = current
+                queue.enqueue(neighbor)
+
+    if found == False:
+        return None
+    else:
+        path_reversed = Vector(grid.size() * grid.get(0).size())        
+        
+        while current != start:
+            path_reversed.push(current)
+            current = parent[current]   
+        path_reversed.push(start)
+        path = Vector(path_reversed.size())
+        for i in reversed(range(path_reversed.size())):
+            path.push(path_reversed.get(i))
+        length = path.size() -1 
+        return length, path
