@@ -57,6 +57,14 @@ def print_maze(grid):
             line += row.get(j)             #add elements into string
         print(line)                        #print line
 
+def print_path(path):
+    print('PATH')
+    for i in range(path.size()):
+        coord = path.get(i)
+        r, c = coord
+        print('-> (' + str(r) + ',' + str(c) + ')')
+
+
 def get_neighbors(grid, row, col):
     neighbors = Vector(4)
     offsets = [(-1, 0), (1, 0), (0, -1), (0, 1)]     #up, down, left, right
