@@ -79,35 +79,35 @@ def get_neighbors(grid, row, col):
                 neighbors.push((new_row, new_col))
     return neighbors
 
-def solve_maze(grid):
-    start = find_start(grid)
-    queue = Queue(grid.size()*grid.get(0).size())
-    queue.enqueue(start)
-    visited = {}
-    visited[start] = True
-    parent={}
+def solve_maze(grid):                           
+    start = find_start(grid)                        # coord of S ex(1,1)
+    queue = Queue(grid.size()*grid.get(0).size())   #[none none none ...]
+    queue.enqueue(start)                            #[(1,1), None, None, None]
+    visited = {}                                    
+    visited[start] = True                           # {(1,1): True}
+    parent={}                                       # {}
 
     found = False
-    while not queue.is_empty():
-        current = queue.dequeue()
-        char = grid.get(current[0]).get(current[1])
+    while not queue.is_empty():                                 #loop if still have elements in queue
+        current = queue.dequeue()                               #[none none none ...]
+        char = grid.get(current[0]).get(current[1])             #(1,1) give S
         if char == 'G':
             found = True
             break
-        neighbors = get_neighbors(grid, current[0], current[1])
-        for i in range(neighbors.size()):
-            neighbor = neighbors.get(i)
-            if neighbor not in visited:
-                visited[neighbor] = True
-                parent[neighbor] = current
-                queue.enqueue(neighbor)
+        neighbors = get_neighbors(grid, current[0], current[1]) #at (1,1) neigbors that are valid are (2,1) and (1,2)
+        for i in range(neighbors.size()):                       #range of 2 now
+            neighbor = neighbors.get(i)                         #get coord such as (2,1) and (1,2)
+            if neighbor not in visited:                         #not in visit yet since now it is only has (1,1)
+                visited[neighbor] = True                        #now add to visit and parent dict (2,1):True and (2,1):(1,1) 
+                parent[neighbor] = current                          
+                queue.enqueue(neighbor)                         #neighboor in queue now
 
     if found == False:
         return None
     else:
         path_reversed = Vector(grid.size() * grid.get(0).size())        
         
-        while current != start:
+        while current != start:                                 #since path vector still reverse from G to S instead of S to G, loop untill get S
             path_reversed.push(current)
             current = parent[current]   
         path_reversed.push(start)
