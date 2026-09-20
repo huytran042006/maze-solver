@@ -63,5 +63,9 @@ for line in lines:
         current_grid = None 
         current_path = None
         print('CLEARED')
+
     elif command == 'QUIT':
         sys.exit(0)
+
+    else: 
+        print('ERROR: UNKNOWN_COMMAND')
