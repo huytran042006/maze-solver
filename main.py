@@ -18,6 +18,8 @@ current_grid = None
 current_path = None
 for line in lines:
     clean = line.strip()
+    if clean == '' or clean.startswith('#'):
+        continue
     parts = clean.split()
     command = parts[0].upper()
     

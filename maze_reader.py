@@ -2,8 +2,12 @@ from vector import Vector
 from queue import Queue
 
 def load_maze(path):
-    with open(path) as f:
-        lines = f.readlines()
+    try:
+        with open(path) as f:
+            lines = f.readlines()
+    except FileNotFoundError:
+        return None
+    
     first_line = lines[0].strip()
     parts = first_line.split()
     rows = int(parts[0])

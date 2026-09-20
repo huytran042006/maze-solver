@@ -24,7 +24,10 @@ class Vector:
         self._size +=1
 
     def get(self, index):
-        return self._data[index]
+        if index >= self.size():
+            raise IndexError('Out of range')
+        else:
+            return self._data[index]
 
 
 #print(v._data)           # [None, None, None, None]

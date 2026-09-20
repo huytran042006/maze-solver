@@ -2,6 +2,16 @@ LOAD_MAZE Mazes/maze1.txt
 PRINT_MAZE
 SOLVE
 PRINT_PATH
+
+LOAD_MAZE Mazes/maze2.txt
+PRINT_MAZE
+SOLVE
+PRINT_PATH
+
+LOAD_MAZE Mazes/badmaze.txt
+
 CLEAR
 PRINT_MAZE
+
+LOAD_MAZE Mazes/missing.txt
 QUIT
