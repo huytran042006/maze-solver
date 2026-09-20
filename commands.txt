@@ -1,4 +1,4 @@
-LOAD_MAZE maze1.txt
+LOAD_MAZE Mazes/maze1.txt
 PRINT_MAZE
 SOLVE
 PRINT_PATH
